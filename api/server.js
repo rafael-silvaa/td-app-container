@@ -27,7 +27,7 @@ app.get('/items', async (req, res) => {
 
 // handle shutdown
 const server = app.listen(port, () => {
-    console.log('API listening on port ${port}');
+    console.log(`API listening on port ${port}`);
 });
 
 process.on('SIGTERM', () => {
