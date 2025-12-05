@@ -24,3 +24,14 @@ app.get('/items', async (req, res) => {
         res.status(500).json({error: 'Database error'});
     }
 });
+
+// handle shutdown
+const server = app.listen(port, () => {
+    console.log('API listening on port ${port}');
+});
+
+process.on('SIGTERM', () => {
+    server.close(() => {
+        console.log('Process terminated');
+    });
+});
