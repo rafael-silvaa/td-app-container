@@ -32,7 +32,9 @@ const server = app.listen(PORT, () => {
     console.log(`API listening on port ${PORT}`);
 });
 
-process.on('SIGTERM', () => {
+process.on('SIGTERM', async () => {
+    console.log('SIGTERM received, shutting down...');
+    await pool.end();
     server.close(() => {
         console.log('Process terminated');
     });
