@@ -1,5 +1,6 @@
 const express = require('express');
 const { Pool } = require('pg');
+const cors = require('cors');
 
 const app = express();
 
@@ -12,6 +13,10 @@ const pool = new Pool({
     password: process.env.DB_PASSWORD,
     port: process.env.DB_PORT,
 });
+
+app.use(cors({
+    origin: process.env.FRONT_URL
+}));
 
 app.get('/status', (req, res) => {
     res.json({ status: 'OK', message: 'API is running'});
