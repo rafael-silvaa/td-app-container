@@ -1,14 +1,16 @@
 const express = require('express');
 const { Pool } = require('pg');
+
 const app = express();
 
-const port = process.env.PORT || 3000;
+const PORT = process.env.API_PORT || 3000;
+
 const pool = new Pool({
-    user: process.env.db_user,
-    host: process.env.db_host,
-    database: process.env.db_name,
-    password: process.env.db_password,
-    port: process.env.db_port,
+    user: process.env.DB_USER,
+    host: process.env.DB_HOST,
+    database: process.env.DB_NAME,
+    password: process.env.DB_PASSWORD,
+    port: process.env.DB_PORT,
 });
 
 app.get('/status', (req, res) => {
@@ -26,8 +28,8 @@ app.get('/items', async (req, res) => {
 });
 
 // handle shutdown
-const server = app.listen(port, () => {
-    console.log(`API listening on port ${port}`);
+const server = app.listen(PORT, () => {
+    console.log(`API listening on port ${PORT}`);
 });
 
 process.on('SIGTERM', () => {
