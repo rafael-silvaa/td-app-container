@@ -4,4 +4,4 @@ CREATE TABLE IF NOT EXISTS items (
 );
 
 INSERT INTO items (name)
-VALUES ('Item 1'), ('Item 2'), ('Item 3');
+VALUES ('Tâche numéro 1'), ('Tâche numéro 2'), ('Tâche numéro 3');
