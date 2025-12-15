@@ -14,17 +14,15 @@ COPY . .
 # stage 2: prod
 FROM node:18-alpine AS runner
 
-# set env to prod
-ENV NODE_ENV=production
-
-# non-root user group and user
-USER node
+RUN addgroup -S appgroup && adduser -S appuser -G appgroup
 
 WORKDIR /app
 
 COPY --from=builder --chown=node:node /app/package*.json ./
 COPY --from=builder --chown=node:node /app/node_modules ./node_modules
 COPY --from=builder --chown=node:node /app/server.js ./
+
+USER appuser
 
 EXPOSE 3000
 
