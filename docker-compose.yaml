@@ -28,6 +28,7 @@ services:
       DB_PASSWORD: apppassword
       DB_NAME: appdb
       API_PORT: 3000
+      FRONT_URL: http://localhost:8080
     ports:
       - "3000:3000"
     healthcheck:
