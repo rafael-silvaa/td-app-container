@@ -31,6 +31,11 @@ services:
       FRONT_URL: http://localhost:8080
     ports:
       - "3000:3000"
+    security_opt:
+      - no-new-privileges:true
+    read_only: true
+    tmpfs:
+      - /tmp
     healthcheck:
       test: ["CMD", "wget", "-qO-", "http://localhost:3000/status"]
       interval: 10s
