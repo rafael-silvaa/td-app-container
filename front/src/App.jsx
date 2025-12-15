@@ -28,17 +28,20 @@ function App() {
   if (error) return <p>Error: {error}</p>;
 
   return (
-    <>
-      <h1>TD</h1>
-      <div style={{ padding: '2rem' }}>
-        <h1>Items</h1>
+    <div style={{ padding: "2rem", fontFamily: "sans-serif" }}>
+      <h1>TD Items</h1>
+      {items.length === 0 ? (
+        <p>No items found in database.</p>
+      ) : (
         <ul>
-          {items.map((item) => {
-            <li key={item.id}>{item.name}</li>
-          })}
+          {items.map((item) => (
+            <li key={item.id}>
+              <strong>{item.name}</strong>
+            </li>
+          ))}
         </ul>
-      </div>
-    </>
+      )}
+    </div>
   );
 }
 
