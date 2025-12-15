@@ -10,13 +10,16 @@ function App() {
   useEffect(() => {
     fetch(`${API_URL}/items`)
       .then((res) => {
-        if (!res.ok) {
-          throw new Error('API error');
-        }
+        if (!res.ok) throw new Error('API error');
         return res.json();
       })
       .then((data) => {
         setItems(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error(err);
+        setError(err.message);
         setLoading(false);
       });
   }, []);
