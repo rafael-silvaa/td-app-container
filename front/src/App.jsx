@@ -37,30 +37,6 @@ function App() {
   
   useEffect(() => {
     fetchData();
-    // // fetch api status
-    // fetch(`${API_URL}/status`)
-    //   .then(res => {
-    //     if (!res.ok) throw new Error('API error')
-    //     return res.json()
-    //   })
-    //   .then(data => setApiStatus(data))
-    //   .catch(err => console.error('Status fetch error:', err))
-
-    // // fetch items from db
-    // fetch(`${API_URL}/items`)
-    //   .then((res) => {
-    //     if (!res.ok) throw new Error('API error');
-    //     return res.json();
-    //   })
-    //   .then((data) => {
-    //     setItems(data);
-    //     setLoading(false);
-    //   })
-    //   .catch((err) => {
-    //     console.error(err);
-    //     setError(err.message);
-    //     setLoading(false);
-    //   });
   }, []);
 
   if (loading) return <p>Loading...</p>;
